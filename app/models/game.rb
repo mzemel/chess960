@@ -1,6 +1,5 @@
 class Game < ActiveRecord::Base
-  has_many :game_move_joins
-  has_many :moves, through: :game_move_joins
+  has_many :moves
   has_many :game_user_joins
   has_many :users, through: :game_user_joins
   has_many :game_pieces
@@ -11,6 +10,7 @@ class Game < ActiveRecord::Base
     game = Game.create
     game.users = [ player_one, player_two ]
     GamePiece.instantiate_new_collection(game)
+    GamePiece.randomize!(game.game_pieces)
     game.save!
     game
   end

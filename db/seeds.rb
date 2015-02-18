@@ -14,8 +14,8 @@ whitney = User.create(name: "Whitney")
 blanch  = User.create(name: "Blanch")
 
 game = Game.setup_game(whitney, blanch)
-game.enter_move(Move.create(summary: "e4"))
-game.enter_move(Move.create(summary: "e5"))
-game.enter_move(Move.create(summary: "d4"))
-game.enter_move(Move.create(summary: "exd4"))
+game.moves << Move.create(game: game, start: "e2", finish: "e4").resolve
+game.moves << Move.create(game: game, start: "e7", finish: "e5").resolve
+game.moves << Move.create(game: game, start: "d2", finish: "d4").resolve
+game.moves << Move.create(game: game, start: "e5", finish: "d4").resolve
 
